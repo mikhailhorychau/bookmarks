@@ -1,0 +1,31 @@
+.autocomplete-input {
+  position: relative;
+  display: inline-block;
+
+  .input {
+    width: 300px;
+  }
+
+  .item-container {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    top: 100%;
+    left: 0;
+    right: 0;
+    
+    &__item {
+      padding: 10px;
+      cursor: pointer;
+      background-color: #fff;
+      border-bottom: 1px solid #d4d4d4; 
+
+      &--selected {
+        background-color: #6ec0d7;
+        color: #fff;
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.input {
+  padding: 8px 0 8px 4px;
+  color: black;
+  border: 2px solid #dddddd;
+  transition: .5s;
+  background-color: transparent;
+
+  &::placeholder {
+    color: darkgray;
+  }
+
+  &:hover {
+    border: 2px solid darken($color: #dddddd, $amount: 30);
+  }
+
+  &:focus-within {
+    outline: none;
+    color: #000000;
+    border: 2px solid #6ec0d7;
+  }
+}
