@@ -13,6 +13,8 @@ const AutocompleteInput: React.FC<IAutocompleteInputProps> = (props) => {
 
   const { placeholder, data, addDataHandler } = props;
 
+  const inputRef = React.useRef<HTMLInputElement>(null);
+
   const [inputValue, setInputValue] = React.useState<string>('');
   const [filtredValues, setFiltredValues] = React.useState<string[]>([]);
   const [currentFiltredValue, setCurrentFiltredValue] = React.useState<string>('');
@@ -28,7 +30,6 @@ const AutocompleteInput: React.FC<IAutocompleteInputProps> = (props) => {
   }
 
   const handleKeyPress = (event: React.KeyboardEvent) => {
-    console.log(event.keyCode)
     if(event.key === 'Enter' && inputValue) {
       event.preventDefault();
       if(currentFiltredValue) {
@@ -44,10 +45,21 @@ const AutocompleteInput: React.FC<IAutocompleteInputProps> = (props) => {
         ? setCurrentFiltredValue(filtredValues[0])
         : setCurrentFiltredValue(filtredValues[filtredValues.indexOf(currentFiltredValue) + 1])
     } else if (event.keyCode === 38 && filtredValues) {
+      event.preventDefault();
       filtredValues.indexOf(currentFiltredValue) === 0
         ? setCurrentFiltredValue(filtredValues[filtredValues.length - 1])
         : setCurrentFiltredValue(filtredValues[filtredValues.indexOf(currentFiltredValue) - 1])
     }
+  }
+
+  const handleMouseClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    console.log((event.target as Element).id)
+    const choosenFiltredValue = (event.target as Element).id;
+    setInputValue(choosenFiltredValue);
+    setFiltredValues([]);
+    setCurrentFiltredValue('');
+    console.log(inputRef)
+    inputRef.current?.focus();
   }
 
   return (
@@ -58,7 +70,10 @@ const AutocompleteInput: React.FC<IAutocompleteInputProps> = (props) => {
         placeholder={placeholder}
         value={inputValue}
         onChange={handleInputChange}
-        onKeyDown={handleKeyPress}  
+        onKeyDown={handleKeyPress}
+        autoFocus={true}
+        inputref={inputRef}
+        //ref={inputRef}
       />
       <div className="item-container">
         {(filtredValues.length && inputValue) ?
@@ -68,6 +83,8 @@ const AutocompleteInput: React.FC<IAutocompleteInputProps> = (props) => {
                 className={classNames('item-container__item',{
                   'item-container__item--selected': filtredValue === currentFiltredValue
                 })}
+                onClick={handleMouseClick}
+                id={filtredValue}
               >
                 {filtredValue}
               </div>

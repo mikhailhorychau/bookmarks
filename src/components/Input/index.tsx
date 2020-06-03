@@ -1,10 +1,15 @@
 import React, { InputHTMLAttributes } from 'react';
 
 import './index.scss';
-const Input: React.FC<InputHTMLAttributes<HTMLInputElement>> = (props) => {
+
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  inputref?: React.Ref<HTMLInputElement>
+}
+
+const Input: React.FC<InputProps> = (props) => {
 
   return (
-    <input className="input" {...props}/>
+    <input className="input" {...props} ref={props.inputref}/>
   )
 }
 
