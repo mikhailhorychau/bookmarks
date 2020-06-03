@@ -44,7 +44,7 @@ const BookmarkForm: React.FC<IBookmarkFormProps> = () => {
         Add new bookmark
       </div>
       <div className="bookmark-form__input-wrapper">
-        <Input type='text' placeholder='Bookmark Title'/>
+        <Input type='text' placeholder='Bookmark URL'/>
       </div>
       <div className="bookmark-form__input-wrapper">
         <Input type='text' placeholder='Bookmark Title'/>

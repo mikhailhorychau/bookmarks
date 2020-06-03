@@ -3,6 +3,7 @@ import classNames from 'classnames';
 
 import './index.scss';
 import Input from '../Input';
+
 interface IAutocompleteInputProps {
   readonly placeholder: string | undefined;
   readonly data: string[];
