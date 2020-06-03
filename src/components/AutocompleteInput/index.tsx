@@ -9,6 +9,14 @@ interface IAutocompleteInputProps {
   readonly addDataHandler: (newData: string) => void;
 }
 
+const lazyFilter = (value: string, filtredArray: string[]): string[] => {
+  const newValue = value.toLowerCase();
+  const foundedValues = filtredArray.filter(el => el.slice(0, newValue.length).includes(newValue));  //TODO: need a better way to find 
+  const lastValues = filtredArray.filter(el => el.includes(newValue) && !foundedValues.includes(el));  // matched values
+  foundedValues.push(...lastValues);
+  return foundedValues;
+}
+
 const AutocompleteInput: React.FC<IAutocompleteInputProps> = (props) => {
 
   const { placeholder, data, addDataHandler } = props;
@@ -21,12 +29,13 @@ const AutocompleteInput: React.FC<IAutocompleteInputProps> = (props) => {
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
-    const newValue = event.target.value.toLowerCase();
-    const foundedValues = data.filter(el => el.slice(0, newValue.length).includes(newValue));  //TODO: need a better way to find 
-    const lastValues = data.filter(el => el.includes(newValue) && !foundedValues.includes(el));  // matched values
-    foundedValues.push(...lastValues);
-    setFiltredValues(foundedValues);
+    setFiltredValues(lazyFilter(event.target.value, data));
     setCurrentFiltredValue('');
+  }
+
+  const clearFilter = ():void => {
+    setCurrentFiltredValue('');
+    setFiltredValues([]);
   }
 
   const handleKeyPress = (event: React.KeyboardEvent) => {
@@ -34,13 +43,13 @@ const AutocompleteInput: React.FC<IAutocompleteInputProps> = (props) => {
       event.preventDefault();
       if(currentFiltredValue) {
         setInputValue(currentFiltredValue);
-        setCurrentFiltredValue('');
-        setFiltredValues([]);
+        clearFilter();
       } else {
         addDataHandler(inputValue.toLocaleLowerCase());
         setInputValue('');
       }
-    } else if (event.keyCode === 40 && filtredValues) {
+    } else if ((event.keyCode === 40 || event.keyCode ===9) && filtredValues && inputValue) {
+      event.preventDefault();
       filtredValues.indexOf(currentFiltredValue) + 1 === filtredValues.length
         ? setCurrentFiltredValue(filtredValues[0])
         : setCurrentFiltredValue(filtredValues[filtredValues.indexOf(currentFiltredValue) + 1])
@@ -49,17 +58,29 @@ const AutocompleteInput: React.FC<IAutocompleteInputProps> = (props) => {
       filtredValues.indexOf(currentFiltredValue) === 0
         ? setCurrentFiltredValue(filtredValues[filtredValues.length - 1])
         : setCurrentFiltredValue(filtredValues[filtredValues.indexOf(currentFiltredValue) - 1])
+    } else if (event.keyCode === 27) {
+      clearFilter();
     }
   }
 
   const handleMouseClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    console.log((event.target as Element).id)
     const choosenFiltredValue = (event.target as Element).id;
+    console.log(choosenFiltredValue)
+    clearFilter();
     setInputValue(choosenFiltredValue);
-    setFiltredValues([]);
-    setCurrentFiltredValue('');
-    console.log(inputRef)
+    console.log(filtredValues)
     inputRef.current?.focus();
+  }
+
+  const handleBlur = () => {
+    clearFilter();
+  }
+
+  const handleFocus = () => {
+    if(inputValue) {
+      setFiltredValues(lazyFilter(inputValue, data));
+      setCurrentFiltredValue('');
+    }
   }
 
   return (
@@ -70,8 +91,9 @@ const AutocompleteInput: React.FC<IAutocompleteInputProps> = (props) => {
         placeholder={placeholder}
         value={inputValue}
         onChange={handleInputChange}
+        //onBlur={handleBlur}
+        // onFocus={handleFocus}
         onKeyDown={handleKeyPress}
-        autoFocus={true}
         inputref={inputRef}
         //ref={inputRef}
       />
