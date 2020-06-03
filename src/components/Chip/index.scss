@@ -1,0 +1,23 @@
+.chip {
+  font-size: 12px;
+  font-weight: 600;
+  min-width: 40px;
+  border: 2px solid #d4d4d4;
+  border-radius: 8px;
+  color: darken($color: #d4d4d4, $amount: 25);
+  padding: 8px 4px;
+  background-color: transparent;
+  cursor: pointer;
+
+  &--selected {
+    border: darken($color: #6ec0d7, $amount: 50);
+    background-color: #6ec0d7;
+    color: white;
+  }
+
+  &:focus {
+    outline: 1px dotted #ffffff;
+    outline-offset: -1px;
+  }
+
+}
