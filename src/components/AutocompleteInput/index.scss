@@ -1,10 +1,7 @@
 .autocomplete-input {
   position: relative;
   display: inline-block;
-
-  .input {
-    width: 300px;
-  }
+  width: 100%;
 
   .item-container {
     position: absolute;
@@ -17,10 +14,15 @@
     right: 0;
     
     &__item {
+      width: inherit;
       padding: 10px;
       cursor: pointer;
       background-color: #fff;
       border-bottom: 1px solid #d4d4d4; 
+
+      &:hover {
+        background-color: lighten($color: #6ec0d7, $amount: 20);
+      }
 
       &--selected {
         background-color: #6ec0d7;

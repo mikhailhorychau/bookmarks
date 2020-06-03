@@ -1,9 +1,11 @@
 .input {
-  padding: 8px 0 8px 4px;
+  padding: 8px 0 8px 8px;
   color: black;
   border: 2px solid #dddddd;
   transition: .5s;
   background-color: transparent;
+  width: 100%;
+  font-size: 18px;
 
   &::placeholder {
     color: darkgray;

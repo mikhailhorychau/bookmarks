@@ -65,10 +65,8 @@ const AutocompleteInput: React.FC<IAutocompleteInputProps> = (props) => {
 
   const handleMouseClick = (event: React.MouseEvent<HTMLDivElement>) => {
     const choosenFiltredValue = (event.target as Element).id;
-    console.log(choosenFiltredValue)
     clearFilter();
     setInputValue(choosenFiltredValue);
-    console.log(filtredValues)
     inputRef.current?.focus();
   }
 
