@@ -1,9 +1,9 @@
 import React from 'react';
-import BookmarkForm from '../components/BookmarkForm';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import './index.scss';
 import Header from '../components/Header';
+import NewBookmark from '../pages/NewBookmark';
 
 const App: React.FC = () => {
   return (
@@ -12,7 +12,7 @@ const App: React.FC = () => {
         <Header/>
         <Switch>
           <Route path='/new'>
-            <BookmarkForm/>
+            <NewBookmark/>
           </Route>
           <Route path='/list'>
             <div>List</div>

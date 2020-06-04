@@ -6,6 +6,8 @@
   .item-container {
     position: absolute;
     border: 1px solid #d4d4d4;
+    max-height: 400px;
+    overflow-y: auto;
     border-bottom: none;
     border-top: none;
     z-index: 99;

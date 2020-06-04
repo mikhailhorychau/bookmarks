@@ -5,10 +5,10 @@ import AutocompleteInput from '../AutocompleteInput';
 import Input from '../Input';
 import Chip from '../Chip';
 
-interface IBookmarkFormProps {
+interface INewBookmarkFormProps {
   
 }
-const BookmarkForm: React.FC<IBookmarkFormProps> = () => {
+const NewBookmarkForm: React.FC<INewBookmarkFormProps> = () => {
 
   const [tags, setTags] = React.useState<string[]>([]);
   const [bookmarkTags, setBookmarkTags] = React.useState<string[]>([]);
@@ -109,4 +109,4 @@ const BookmarkForm: React.FC<IBookmarkFormProps> = () => {
   )
 }
 
-export default BookmarkForm;
+export default NewBookmarkForm;
