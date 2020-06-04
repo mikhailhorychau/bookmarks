@@ -4,4 +4,10 @@
   border: none;
   outline: none;
   background-color: transparent;
+  transition: .5s;
+  
+  // &:focus,
+  // &:hover {
+  //   background-color: darken($color: #6ec0d7, $amount: 20);
+  // }
 }

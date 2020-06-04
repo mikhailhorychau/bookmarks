@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   justify-content: space-between;
-  
+
   &__logo {
     font-family: 'Pacifico', cursive;
     font-size: 30px;
@@ -30,10 +30,16 @@
     &:hover {
       background-color: darken($color: #6ec0d7, $amount: 20);
     }
+
+    &:focus {
+      outline: none;
+      background-color: darken($color: #6ec0d7, $amount: 20);
+    }
   }
 
   .menu-container {
     padding-top: 10px;
+
   }
 
   .dropdown-container {
@@ -62,6 +68,8 @@
         background-color: darken($color: #6ec0d7, $amount: 20);
       }
 
+      
+      
       &:first-child {
         border-top: 1px solid #fff;
       }

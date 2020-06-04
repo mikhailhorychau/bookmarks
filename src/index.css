@@ -10,3 +10,11 @@ body {
 *::after {
   box-sizing: border-box;
 }
+
+button::-moz-focus-inner {
+  border: 0;
+}
+
+link::-moz-focus-inner {
+  border: 0;
+}

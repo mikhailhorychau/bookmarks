@@ -39,6 +39,10 @@
     &:hover {
       background-color: darken($color: #6ec0d7, $amount: 20);
     }
+
+    &:focus {
+      background-color: darken($color: #6ec0d7, $amount: 20);
+    }
   }
 }
 
@@ -71,6 +75,16 @@
 
     &:hover {
       background-color: #d66d6d;
+    }
+
+    &:focus {
+      text-decoration: none;
+      background-color: #d66d6d;
+      outline: none;
+    }
+
+    &::-moz-focus-inner {
+      border: 0;
     }
   }
 }
