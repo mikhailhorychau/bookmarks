@@ -1,11 +1,12 @@
 .chip {
   font-size: 16px;
   font-weight: 600;
+  font-family: 'Roboto Slab', serif;
   min-width: 40px;
   border: 2px solid #d4d4d4;
   border-radius: 8px;
   color: darken($color: #d4d4d4, $amount: 25);
-  padding: 10px 6px;
+  padding: 6px 12px;
   background-color: transparent;
   cursor: pointer;
 

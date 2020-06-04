@@ -34,7 +34,6 @@ const BookmarkForm: React.FC<IBookmarkFormProps> = () => {
 
   const handleSubmit = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
-    const target = event.target as Element;
     if(urlInput && titleInput) {
       const localBookmarks = JSON.parse(localStorage.getItem('bookmarks') || "[]");
       const newBookmark = {
@@ -89,21 +88,22 @@ const BookmarkForm: React.FC<IBookmarkFormProps> = () => {
         />
       </div>
       <div className="bookmark-form__input-wrapper">
-        <AutocompleteInput data={tags} addDataHandler={addBookmarkTag} placeholder='tag'/>
+        <AutocompleteInput data={tags} addDataHandler={addBookmarkTag} placeholder='Tag'/>
       </div>
       <button className="bookmark-form__button" onClick={handleSubmit}>
         Save Bookmark
       </button>
-      <div className='chip-container'>
-        <div className="chip-container__title">Tags:</div>
-        <div className="chip-container__items">
-          {bookmarkTags.map(tag => (
-            <Chip selected key={tag} id={tag} onClick={removeBookmarkTag}>
-              {tag}
-            </Chip>
-          ))}
-        </div>
-      </div>
+      {bookmarkTags.length ? 
+        <div className='chip-container'>
+          {/* <div className="chip-container__title">Tags:</div> */}
+          <div className="chip-container__items">
+            {bookmarkTags.map(tag => (
+              <Chip selected key={tag} id={tag} onClick={removeBookmarkTag}>
+                {tag}
+              </Chip>
+            ))}
+          </div>
+        </div> : undefined}
     </div>
   )
 }

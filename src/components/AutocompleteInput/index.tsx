@@ -11,11 +11,13 @@ interface IAutocompleteInputProps {
 }
 
 const lazyFilter = (value: string, filtredArray: string[]): string[] => {
-  const newValue = value.toLowerCase();
-  const foundedValues = filtredArray.filter(el => el.slice(0, newValue.length).includes(newValue));  //TODO: need a better way to find 
-  const lastValues = filtredArray.filter(el => el.includes(newValue) && !foundedValues.includes(el));  // matched values
-  foundedValues.push(...lastValues);
-  return foundedValues;
+  if(filtredArray.length) {
+    const newValue = value.toLowerCase();
+    const foundedValues = filtredArray.filter(el => el.slice(0, newValue.length).includes(newValue));  //TODO: need a better way to find 
+    const lastValues = filtredArray.filter(el => el.includes(newValue) && !foundedValues.includes(el));  // matched values
+    foundedValues.push(...lastValues);
+    return foundedValues;
+  } else return [];
 }
 
 const AutocompleteInput: React.FC<IAutocompleteInputProps> = (props) => {
@@ -49,7 +51,7 @@ const AutocompleteInput: React.FC<IAutocompleteInputProps> = (props) => {
         addDataHandler(inputValue.toLocaleLowerCase());
         setInputValue('');
       }
-    } else if ((event.keyCode === 40 || event.keyCode ===9) && filtredValues && inputValue) {
+    } else if ((event.keyCode === 40 || event.keyCode ===9) && filtredValues.length && inputValue) {
       event.preventDefault();
       filtredValues.indexOf(currentFiltredValue) + 1 === filtredValues.length
         ? setCurrentFiltredValue(filtredValues[0])
@@ -65,6 +67,7 @@ const AutocompleteInput: React.FC<IAutocompleteInputProps> = (props) => {
   }
 
   const handleMouseClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.preventDefault();
     const choosenFiltredValue = (event.target as Element).id;
     clearFilter();
     setInputValue(choosenFiltredValue);
@@ -72,7 +75,7 @@ const AutocompleteInput: React.FC<IAutocompleteInputProps> = (props) => {
   }
 
   const handleBlur = () => {
-    clearFilter();
+    setTimeout(() => {setFiltredValues([]);}, 100)
   }
 
   const handleFocus = () => {
@@ -90,8 +93,8 @@ const AutocompleteInput: React.FC<IAutocompleteInputProps> = (props) => {
         placeholder={placeholder}
         value={inputValue}
         onChange={handleInputChange}
-        //onBlur={handleBlur}
-        // onFocus={handleFocus}
+        onBlur={handleBlur}
+        onFocus={handleFocus}
         onKeyDown={handleKeyPress}
         inputref={inputRef}
         //ref={inputRef}

@@ -4,18 +4,18 @@
   flex-direction: column;
   align-items: center;
   margin: auto;
-  max-width: 1000px;
   
   &__header {
+    text-align: center;
     color:  #6ec0d7;
     padding-bottom: 8px;
-    font-size: 32px;
+    font-size: 48px;
     font-weight: 600;
   }
 
   &__input-wrapper {
     width: 45%;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 
     @media screen and(max-width: 768px){
       width: 80%
@@ -23,15 +23,18 @@
   }
 
   &__button {
-    font-size: 24px;
+    font-size: 32px;
     font-weight: 600;
-    padding: 6px 12px;
-    margin-bottom: 6px;
+    font-family: 'Roboto Slab', serif;
+    padding: 8px 18px;
+    margin-top: 8px;
+    margin-bottom: 16px;
     background-color: #6ec0d7;
     color: #fff;
     outline: none;
     border: none;
     transition: .5s;
+    cursor: pointer;
 
     &:hover {
       background-color: darken($color: #6ec0d7, $amount: 20);
@@ -42,7 +45,6 @@
 .chip-container {
   width: 100%;
   padding-top: 8px;
-  padding-bottom: 8px;
   display: flex;
   justify-content: flex-start;
   border-top: 1px solid #6ec0d7;
@@ -62,7 +64,13 @@
   }
 
   .chip {
-    margin-right: 8px;
-    margin-top: 4px;
+    text-transform: uppercase;
+    padding: 12px 12px;
+    margin-right: 12px;
+    margin-bottom: 8px;
+
+    &:hover {
+      background-color: #d66d6d;
+    }
   }
 }
