@@ -87,7 +87,12 @@ const NewBookmarkForm: React.FC<INewBookmarkFormProps> = () => {
           autoComplete='off'
         />
       </div>
-      <TagsForm tags={tags} selectedTags={bookmarkTags} addTagHandler={addBookmarkTag} removeTagHandler={removeBookmarkTag}/>
+      <TagsForm 
+        tags={tags} 
+        selectedTags={bookmarkTags} 
+        addTagHandler={addBookmarkTag} 
+        removeTagHandler={removeBookmarkTag}
+      />
       <button className="bookmark-form__button" onClick={handleSubmit}>
         Save Bookmark
       </button>

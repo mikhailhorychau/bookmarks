@@ -66,7 +66,13 @@ const SearchBookmarkForm: React.FC<ISearchBookmarkFormProps> = () => {
           onChange={handleTitleInputChange}
         />
       </div>
-      <TagsForm tags={tags} removeTagHandler={removeBookmarkTag} addTagHandler={addTagToBookmarkHandler} selectedTags={bookmarkTags}/>
+      <TagsForm 
+        tags={tags} 
+        removeTagHandler={removeBookmarkTag} 
+        addTagHandler={addTagToBookmarkHandler} 
+        selectedTags={bookmarkTags}
+        onlyMatchedValues  
+      />
       <div className="searchBookmark-form__header">
         Bookmarks list
       </div>
