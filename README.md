@@ -12,6 +12,15 @@ It currently uses localStorage as a data source, but in the future i maybe add b
 * classnames 2.2.6
 * @rehooks/window-size 1.0.2
 
+## Why did i do this?
+Just for fun, just for practice, just for yourself
+
+## What remains to be done?
+* Home, Help and Settings Page
+* Need refactor code, in some places it looks like :shit:
+* Back-end service with registration and data storage
+* Some ui changes. still dont like it
+
 ## Available Scripts
 
 In the project directory, you can run:
