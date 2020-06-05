@@ -1,0 +1,26 @@
+.searchBookmark-form {
+
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
+  &__header {
+    text-align: center;
+    color:  #6ec0d7;
+    padding-bottom: 8px;
+    font-size: 48px;
+    font-weight: 600;
+  }
+
+
+  &__title-input {
+    width: 45%;
+    margin-bottom: 12px;
+
+    @media screen and(max-width: 768px){
+      width: 80%
+    }
+  }
+}

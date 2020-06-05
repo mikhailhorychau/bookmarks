@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import './index.scss';
 import Header from '../components/Header';
 import NewBookmark from '../pages/NewBookmark';
+import Bookmarks from '../pages/Bookmarks';
 
 const App: React.FC = () => {
   return (
@@ -15,7 +16,7 @@ const App: React.FC = () => {
             <NewBookmark/>
           </Route>
           <Route path='/list'>
-            <div>List</div>
+            <Bookmarks/>
           </Route>
           <Route exact path='/'>
             <div>Home</div>

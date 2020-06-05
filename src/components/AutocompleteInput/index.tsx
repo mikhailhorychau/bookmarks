@@ -7,7 +7,7 @@ import Input from '../Input';
 interface IAutocompleteInputProps {
   readonly placeholder: string | undefined;
   readonly data: string[];
-  readonly addDataHandler: (newData: string) => void;
+  readonly addDataHandler?: (newData: string) => void;
 }
 
 const lazyFilter = (value: string, filtredArray: string[]): string[] => {
@@ -48,7 +48,9 @@ const AutocompleteInput: React.FC<IAutocompleteInputProps> = (props) => {
         setInputValue(currentFiltredValue);
         clearFilter();
       } else {
-        addDataHandler(inputValue.toLocaleLowerCase());
+        if(addDataHandler) {
+          addDataHandler(inputValue.toLocaleLowerCase());
+        }
         setInputValue('');
       }
     } else if ((event.keyCode === 40 || event.keyCode ===9) && filtredValues.length && inputValue) {

@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 
 import './index.scss';
-import AutocompleteInput from '../AutocompleteInput';
 import Input from '../Input';
-import Chip from '../Chip';
+import TagsForm from '../TagsForm';
 
 interface INewBookmarkFormProps {
   
@@ -88,23 +87,10 @@ const NewBookmarkForm: React.FC<INewBookmarkFormProps> = () => {
           autoComplete='off'
         />
       </div>
-      <div className="bookmark-form__input-wrapper">
-        <AutocompleteInput data={tags} addDataHandler={addBookmarkTag} placeholder='Tag'/>
-      </div>
+      <TagsForm tags={tags} selectedTags={bookmarkTags} addTagHandler={addBookmarkTag} removeTagHandler={removeBookmarkTag}/>
       <button className="bookmark-form__button" onClick={handleSubmit}>
         Save Bookmark
       </button>
-      {bookmarkTags.length ? 
-        <div className='chip-container'>
-          {/* <div className="chip-container__title">Tags:</div> */}
-          <div className="chip-container__items">
-            {bookmarkTags.map(tag => (
-              <Chip selected key={tag} id={tag} onClick={removeBookmarkTag}>
-                {tag}
-              </Chip>
-            ))}
-          </div>
-        </div> : undefined}
     </div>
   )
 }

@@ -1,0 +1,47 @@
+.tags-form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+
+  &__input-container {
+    width: 45%;
+    margin-bottom: 12px;
+
+    @media screen and(max-width: 768px){
+      width: 80%
+    }
+  }
+
+  &__chip-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    width: 100%;
+    padding-top: 8px;
+    border-top: 1px solid rgba(110, 192, 215, 0.5);
+    border-bottom: 1px solid rgba(110, 192, 215, 0.5);
+
+    .chip {
+      text-transform: uppercase;
+      padding: 12px 12px;
+      margin-right: 12px;
+      margin-bottom: 8px;
+  
+      &:hover {
+        background-color: #d66d6d;
+      }
+  
+      &:focus {
+        text-decoration: none;
+        background-color: #d66d6d;
+        outline: none;
+      }
+  
+      &::-moz-focus-inner {
+        border: 0;
+      }
+    }
+  }
+}
+

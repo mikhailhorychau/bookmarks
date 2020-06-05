@@ -1,0 +1,36 @@
+.bookmarks-list {
+
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  border-top: 1px solid rgba(110, 192, 215, 0.5);
+  border-bottom: 1px solid rgba(110, 192, 215, 0.5);
+
+  &__item {
+    
+    width: 33%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 4px 20px 4px 0px;
+
+    @media screen and(max-width: 768px){
+      width: 50%
+    }
+
+    @media screen and(max-width: 580px){
+      width: 100%
+    }
+
+    &-link {
+      font-size: 24px;
+      color: lighten($color: #000000, $amount: 30);
+      text-decoration: none;
+      transition: .5s;
+
+      &:hover {
+        color: #6ec0d7;
+      }
+    }
+  }
+}
