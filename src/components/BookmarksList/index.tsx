@@ -13,7 +13,7 @@ const BookmarkForm: React.FC<IBookmarkFormProps> = ({bookmarks, ...props}) => {
   return (
     <div className="bookmarks-list" {...props}>
       {bookmarks.map(bookmark => (
-        <div className='bookmarks-list__item'>
+        <div className='bookmarks-list__item' key={bookmark.url + bookmark.title}>
           <a href={bookmark.url} className="bookmarks-list__item-link" target='__blank'>{bookmark.title}</a>
         </div>
       ))}

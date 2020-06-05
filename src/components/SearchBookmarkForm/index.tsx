@@ -43,7 +43,7 @@ const SearchBookmarkForm: React.FC<ISearchBookmarkFormProps> = () => {
 
   useEffect(() => {
     const foundByTitleBookmarks = bookmarks.filter(bookmark => 
-      lazyFilter(titleInput, bookmarks.map(filteredBookmark => filteredBookmark.title)).includes(bookmark.title));
+      lazyFilter(titleInput, bookmarks.map(filteredBookmark => filteredBookmark.title.toLowerCase())).includes(bookmark.title.toLowerCase()));
     if(bookmarkTags.length) {
       const foundByTitleAndTagsBookmarks = foundByTitleBookmarks.filter(bookmark => 
       bookmarkTags.every(tag => bookmark.tags.includes(tag)));
