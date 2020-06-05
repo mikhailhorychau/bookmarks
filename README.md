@@ -60,4 +60,4 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Author 
 
-Mikhail Horychau email: [mikhailhorychau@yandex.by], telegram: [@mishakosyakov](https://t.me/mishakosyakov)
+Mikhail Horychau email: mikhailhorychau@yandex.by, telegram: [@mishakosyakov](https://t.me/mishakosyakov)
