@@ -74,7 +74,6 @@ const NewBookmarkForm: React.FC<INewBookmarkFormProps> = () => {
           value={urlInput}
           onChange={handleUrlInputChange}
           autoComplete='off'
-          autoFocus
         />
       </div>
       <div className="bookmark-form__input-wrapper">

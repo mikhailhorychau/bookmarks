@@ -24,7 +24,7 @@ const Header: React.FC<IHeaderProps> = () => {
       <div className="header__logo">
         Bookmarks
       </div>
-      {windowWidth > 768 ? 
+      {windowWidth > 780 ? 
         <div className="links-container">
           <NavLink to="/new" className="link">
             New Bookmark
@@ -32,8 +32,8 @@ const Header: React.FC<IHeaderProps> = () => {
           <NavLink to="/list" className="link">
             Bookmarks List
           </NavLink>
-          <NavLink to="/help" className="link">
-            Help
+          <NavLink to="/settings" className="link">
+            Settings
           </NavLink>
         </div> :
         <div className='menu-container'>
@@ -48,8 +48,8 @@ const Header: React.FC<IHeaderProps> = () => {
         <NavLink to="/list" className="dropdown-container__link">
           Bookmarks List
         </NavLink>
-        <NavLink to="/help" className="dropdown-container__link">
-          Help
+        <NavLink to="/settings" className="dropdown-container__link">
+          Settings
         </NavLink>
       </div> : undefined}
     </div>

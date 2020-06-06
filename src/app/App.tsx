@@ -5,6 +5,7 @@ import './index.scss';
 import Header from '../components/Header';
 import NewBookmark from '../pages/NewBookmark';
 import Bookmarks from '../pages/Bookmarks';
+import Settings from '../pages/Settings';
 
 const App: React.FC = () => {
   return (
@@ -21,8 +22,8 @@ const App: React.FC = () => {
           <Route exact path='/'>
             <div>Home</div>
           </Route>
-          <Route path='/help'>
-            <div>Help</div>
+          <Route path='/settings'>
+            <Settings/>
           </Route>
         </Switch>
       </BrowserRouter>
